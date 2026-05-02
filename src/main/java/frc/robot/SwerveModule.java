@@ -7,11 +7,14 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.lib.math.conversions.Conversions;
 import frc.lib.util.SwerveModuleConstants;
-import frc.lib.util.Resolver;
+
+//ANALOG ENCODERS
+//import frc.lib.util.Resolver;
 
 //TALONFX
 import com.ctre.phoenix6.controls.PositionDutyCycle;
 import com.ctre.phoenix6.controls.VelocityDutyCycle;
+import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 
@@ -33,7 +36,8 @@ public class SwerveModule {
     //private CANVenom mDriveMotor;
     private TalonFX mDriveMotor;
 
-    public Resolver angleEncoder;
+    //public Resolver angleEncoder;
+    public CANcoder angleEncoder;
     private boolean forceAbsolute;
     private double lastAngle;
     public PIDController anglePID;
@@ -56,7 +60,8 @@ public class SwerveModule {
         angleOffset = moduleConstants.angleOffset;
         
         /* Angle Encoder Config */
-        angleEncoder = new Resolver(moduleConstants.encoderID);
+        //angleEncoder = new Resolver(moduleConstants.encoderID);
+        angleEncoder = new CANcoder(moduleConstants.encoderID);
         configAngleEncoder();
 
         /* Angle Motor Config */
@@ -138,13 +143,14 @@ public class SwerveModule {
  
     private void configAngleEncoder(){ 
         /* Not applicable for analog absolute encoders. Re-enable if using CANcoders */
-       // angleEncoder.zero();
+        //angleEncoder.zero();
         //angleEncoder.configAllSettings(Robot.ctreConfigs.swerveCanCoderConfig);
     }
 
     public double angleEncoderGet(){
-        angleEncoder.update();
-        return angleEncoder.value - this.angleOffset;
+        //angleEncoder.update();
+        //return angleEncoder.value - this.angleOffset;
+        return 0;
     }
 
     private void configAngleMotor(){

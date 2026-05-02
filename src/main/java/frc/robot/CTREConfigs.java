@@ -11,13 +11,13 @@ import com.ctre.phoenix6.signals.InvertedValue;
 public final class CTREConfigs {
     public TalonFXConfiguration swerveAngleFXConfig;
     public TalonFXConfiguration swerveDriveFXConfig;
-    //public CANCoderConfiguration swerveCanCoderConfig;
+    public CANcoderConfiguration swerveCanCoderConfig;
 
 
     public CTREConfigs(){
         swerveAngleFXConfig = new TalonFXConfiguration();
         swerveDriveFXConfig = new TalonFXConfiguration();
-        //swerveCanCoderConfig = new CANCoderConfiguration();
+        swerveCanCoderConfig = new CANcoderConfiguration();
 
         /* Swerve Angle Motor Configurations */
         swerveAngleFXConfig.Slot0.kP = Constants.Swerve.angleKP;
@@ -53,12 +53,12 @@ public final class CTREConfigs {
 
         
         /* Swerve CANCoder Configuration */
-        /*
+        
         swerveCanCoderConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
         swerveCanCoderConfig.sensorDirection = Constants.Swerve.canCoderInvert;
         swerveCanCoderConfig.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
         swerveCanCoderConfig.sensorTimeBase = SensorTimeBase.PerSecond;
-        */
+        
 
         
 
